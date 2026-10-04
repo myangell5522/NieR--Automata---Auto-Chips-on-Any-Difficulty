@@ -1,0 +1,10 @@
+/tools/
+/build/
+*.o
+*.obj
+*.ilk
+*.pdb
+*.exp
+*.lib
+package/data/mods/plugins/*.dll
+package/data/mods/plugins/*.log
