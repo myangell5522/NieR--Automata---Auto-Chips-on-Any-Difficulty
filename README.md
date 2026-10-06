@@ -27,14 +27,18 @@ Special K has to load `modloader.dll`. A NAMH install with the ModLoader wrapper
 
 ### NAMH
 
+The Mods tab only accepts game files inside an archive (`.cpk`, `.dat`, `.dtt`, `.dds`, `.png`, `.jpg`). Adding `NieRAutomata-AutoChips-1.0.zip` there shows "No supported files were inside". Do not add that zip.
+
 1. Open the Mods tab.
-2. Add `dist/NieRAutomata-AutoChips-1.0.zip` and press Apply.
+2. Add `dist/AutoChips.dll` (the file, not the zip) and press Apply.
 3. If NAMH asks to install the DLL through modloader, confirm.
 4. Launch the game. `data\mods\plugins\AutoChips.log` should contain `patched` for both sites.
 
+If that log never appears, copy `AutoChips.dll` to `data\mods\plugins` and keep `AutoChips=EARLY` under `[DLL]` in `data\mods\config.ini`.
+
 ### By hand
 
-Copy the `data` folder from the zip into the game directory and merge. If `data\mods\config.ini` already exists, do not replace it. Add the `AutoChips=EARLY` line under `[DLL]`.
+Use `dist/NieRAutomata-AutoChips-1.0.zip`. Copy the `data` folder from the zip into the game directory and merge. If `data\mods\config.ini` already exists, do not replace it. Add the `AutoChips=EARLY` line under `[DLL]`.
 
 ### Remove
 
@@ -63,10 +67,11 @@ build\check_patterns.exe "D:\SteamLibrary\steamapps\common\NieRAutomata\NieRAuto
 ## Layout
 
 ```text
-src/autochips.c          plugin
-build.bat                build with clang
-package/                 files that go into the game
-dist/NieRAutomata-AutoChips-1.0.zip
+src/autochips.c                         plugin
+build.bat                               build with clang
+package/                                files that go into the game
+dist/NieRAutomata-AutoChips-1.0.zip     manual install, not for the NAMH Mods tab
+dist/AutoChips.dll                      file to add in the NAMH Mods tab
 ```
 
 ## License
@@ -104,14 +109,18 @@ Special K должен загружать `modloader.dll`. Установка NA
 
 ### NAMH
 
+Вкладка Mods берёт из архива только игровые файлы (`.cpk`, `.dat`, `.dtt`, `.dds`, `.png`, `.jpg`). Если добавить туда `NieRAutomata-AutoChips-1.0.zip`, NAMH напишет «No supported files were inside». Этот zip туда не класть.
+
 1. Вкладка Mods.
-2. Добавить `dist/NieRAutomata-AutoChips-1.0.zip` и нажать Apply.
+2. Добавить `dist/AutoChips.dll` (сам файл, не архив) и нажать Apply.
 3. Если NAMH спросит, ставить ли DLL через modloader, подтвердить.
 4. Запустить игру. В `data\mods\plugins\AutoChips.log` у обоих сайтов должно быть `patched`.
 
+Если лог так и не появился, скопировать `AutoChips.dll` в `data\mods\plugins` и оставить в `data\mods\config.ini` строку `AutoChips=EARLY` в секции `[DLL]`.
+
 ### Вручную
 
-Скопировать папку `data` из архива в каталог игры, с объединением. Если `data\mods\config.ini` уже есть, не заменять его, а дописать `AutoChips=EARLY` в секцию `[DLL]`.
+Взять `dist/NieRAutomata-AutoChips-1.0.zip`. Скопировать папку `data` из архива в каталог игры, с объединением. Если `data\mods\config.ini` уже есть, не заменять его, а дописать `AutoChips=EARLY` в секцию `[DLL]`.
 
 ### Удаление
 

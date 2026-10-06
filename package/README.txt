@@ -9,19 +9,25 @@ Requires the Steam build from 17 July 2021 and nier-mod-loader (the copy
 NAMH installs is enough). Special K must load modloader.dll, which NAMH
 already sets up when the ModLoader wrapper is enabled.
 
-Install with NAMH
------------------
-1. Open NAMH, Mods tab.
-2. Add this zip and press Apply.
-3. Confirm Install (modloader) if NAMH asks.
-4. Start the game. After you reach gameplay, data\mods\plugins\AutoChips.log
-   should contain "patched".
-
 The loader reads files only after the game sets its working directory to
 the data folder, so the plugin lives at:
 
   data\mods\plugins\AutoChips.dll
   data\mods\config.ini
+
+config.ini needs this line under [DLL]:
+
+  AutoChips=EARLY
+
+Do not add this zip in the NAMH Mods tab
+----------------------------------------
+NAMH only accepts game files inside an archive (.cpk, .dat, .dtt, .dds,
+.png, .jpg). This zip makes NAMH say "No supported files were inside".
+
+To install with NAMH, add the separate AutoChips.dll file (not this zip)
+on the Mods tab and press Apply. Confirm Install (modloader) if NAMH asks.
+Then start the game. data\mods\plugins\AutoChips.log should contain
+"patched".
 
 Install by hand
 ---------------
@@ -47,8 +53,11 @@ from the Resistance Camp supply trader if they are not in your inventory yet.
 Мод разрешает пять чипов авто-контроля на любой сложности. Урон и здоровье
 врагов остаются от выбранной сложности. Файл NieRAutomata.exe не меняется.
 
-Установка через NAMH: вкладка Mods, добавить этот zip, Apply. Если NAMH
-спросит Install (modloader), подтвердить.
+Этот zip во вкладку Mods NAMH не добавлять. NAMH ищет в архиве .cpk, .dat,
+.dtt, .dds, .png, .jpg и напишет "No supported files were inside".
+
+Через NAMH ставится отдельный файл AutoChips.dll, не архив. Вкладка Mods,
+добавить файл, Apply. Если NAMH спросит Install (modloader), подтвердить.
 
 Вручную: скопировать папку data из архива в каталог игры. Если
 data\mods\config.ini уже есть, не заменять его, а дописать в секцию [DLL]
